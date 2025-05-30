@@ -15,7 +15,7 @@ ID:
 <input type="submit" value="ログイン">
 </form>
 
-<form action="registration" method="get">
+<form action="registration.jsp" method="get">
 <input type="submit" value="新規会員登録">
 </form>
 
