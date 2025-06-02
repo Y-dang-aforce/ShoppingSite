@@ -7,6 +7,13 @@
 <title>cart</title>
 </head>
 <body>
+
+<%
+if (session == null || session.getAttribute("user") == null) {
+    response.sendRedirect("login-in.jsp");
+   
+}
+%>
 <p>ここはカートです。</p>
 <a href="user-menu.jsp">ホーム画面へ戻る</a>
 </body>

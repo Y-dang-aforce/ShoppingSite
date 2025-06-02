@@ -36,7 +36,20 @@
 	</ul>	
 	</nav>
  
-	
+<%
+	User user = (User) session.getAttribute("user");
+	if (user != null) {
+	%>
+	<p>
+		ようこそ、<%=user.getFirstName()%> <%=user.getLastName()%>さん!
+	</p>
+
+	<%
+	}else{
+		response.sendRedirect("login-in.jsp");
+	}
+	%>
+ 
 	<input type="submit" value="修正"><br>
 	<input type="submit" value="削除"><br>
 	<form action="remove" method="get">
