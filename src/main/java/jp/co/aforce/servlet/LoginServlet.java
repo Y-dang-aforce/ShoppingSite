@@ -21,11 +21,11 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         
         try {
-            UsersDAO dao = new UsersDAO();
-            User user=dao.getUser(memberId,password);
+            UsersDAO dao = new UsersDAO();// データベース操作用の UsersDAO インスタンスを作成します
+            User user=dao.getUser(memberId,password);//getUserを使って結果はuserです
             if (user!=null) {
-            	session.setAttribute("user", user);
-                response.sendRedirect("user-meau.jsp");
+            	session.setAttribute("user", user);//ユーザー情報をセッションに保存します（ログイン状態の保持）
+                response.sendRedirect("user-menu.jsp");
             } else {            	
             	response.sendRedirect("login-error.jsp");
             }

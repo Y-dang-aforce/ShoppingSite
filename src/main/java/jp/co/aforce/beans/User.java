@@ -8,9 +8,7 @@ public class User implements java.io.Serializable{
 	private String address;
 	private String mailAddress;
 	
-	public User(String memberId, String password, String lastName, String firstName, String address, String mailAddress) {
-		this.memberId = memberId;
-		this.password = password;
+	public User(String lastName, String firstName, String address, String mailAddress) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.address = address;
