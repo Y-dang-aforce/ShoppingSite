@@ -12,26 +12,34 @@ import jakarta.servlet.http.HttpSession;
 import jp.co.aforce.beans.User;
 import jp.co.aforce.dao.UsersDAO;
 
+/**
+ * Servlet implementation class userAddConfirm
+ */
+@WebServlet("/views/userAddConfirm")
+public class userAddConfirm extends HttpServlet {
 
-@WebServlet(urlPatterns = {"/views/login"})
-public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberId = request.getParameter("memberId");
         String password = request.getParameter("password");
+        String lastName=request.getParameter("lastName");
+        String firstName = request.getParameter("firstName");
+        String address = request.getParameter("address");
+        String mailAddress = request.getParameter("mailAddress");
         HttpSession session = request.getSession();
         
         try {
-            UsersDAO dao = new UsersDAO();// データベース操作用の UsersDAO インスタンスを作成します
-            User user=dao.getUser(memberId,password);//getUserを使って結果はuserです
+            UsersDAO dao = new UsersDAO();
+            User user=dao.getUser(memberId,password);
             if (user!=null) {
-            	session.setAttribute("user", user);//ユーザー情報をセッションに保存します（ログイン状態の保持）
-                response.sendRedirect("userMenu.jsp");
-            } else {            	
-            	response.sendRedirect("loginError.jsp");
+            	session.setAttribute("user", user);
+                response.sendRedirect("registrationError.jsp");
+            } else {
+            	dao.addUser(memberId,password,lastName,firstName,address,mailAddress);
+            	response.sendRedirect("userSuccess.jsp");
             }
         }catch (Exception e) {
         	throw new ServletException(e);
         }
-        
 	}
+
 }

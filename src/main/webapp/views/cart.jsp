@@ -15,6 +15,6 @@ if (session == null || session.getAttribute("user") == null) {
 }
 %>
 <p>ここはカートです。</p>
-<a href="user-menu.jsp">ホーム画面へ戻る</a>
+<a href="userMenu.jsp">ホーム画面へ戻る</a>
 </body>
 </html>

@@ -17,16 +17,18 @@ import jp.co.aforce.tool.Page;
  */
 @WebServlet(urlPatterns = { "/views/remove" })
 public class Remove extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		Page.header(out);
 
 		HttpSession session = request.getSession();
 		session.removeAttribute("user");
 		System.out.println(session.getAttribute("user"));
-
+		session.removeAttribute("userBean");
+		System.out.println(session.getAttribute("userBean"));
+		
 		Page.footer(out);
-		response.sendRedirect("login-in.jsp");
+		response.sendRedirect("userLogout.jsp");
 	}
 
 }
